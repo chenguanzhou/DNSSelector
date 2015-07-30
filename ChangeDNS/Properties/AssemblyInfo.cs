@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("ChangeDNS")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("陈关州")]
 [assembly: AssemblyProduct("ChangeDNS")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]

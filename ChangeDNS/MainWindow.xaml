@@ -2,7 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:ChangeDNS"
+        xmlns:vm="clr-namespace:ChangeDNS.ViewModel"
         Title="DNS Setter" Height="350" Width="400" MinWidth="300" MinHeight="300">
+    <Window.DataContext>
+        <vm:MainViewModel x:Name="MainVM"></vm:MainViewModel>
+    </Window.DataContext>
     <Window.Resources>
         <Style x:Key="TitleStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"></Setter>
@@ -60,9 +64,9 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource ResourceKey=TitleStyle}" Text="Current DNS"/>
-            <Button x:Name="ButtonRefreshDNS" Grid.Row="1" Grid.Column="1" Content="Refresh" Style="{StaticResource ResourceKey=ButtonStyle}" Click="ButtonRefreshDNS_Click"/>
-            <local:DNSBox x:Name="CurrentDNS" Grid.Row="1" Grid.Column="0" Margin="5"></local:DNSBox>
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource ResourceKey=TitleStyle}" Text="Current System DNS"/>
+            <Button x:Name="ButtonRefreshDNS" Grid.Row="1" Grid.Column="1" Content="Refresh" Style="{StaticResource ResourceKey=ButtonStyle}" Command="{Binding RefreshSystemDNS}"/>
+            <local:DNSBox x:Name="SystemDNS" Grid.Row="1" Grid.Column="0" Margin="5" DataContext="{Binding SystemDNS}" ></local:DNSBox>
         </Grid>
         <GridSplitter Grid.Row="1"
           HorizontalAlignment="Stretch"
@@ -77,19 +81,20 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource ResourceKey=TitleStyle}" Text="Select a DNS server"/>
 
-            <ListView Grid.Row="1" Grid.Column="0" Margin="5"></ListView>
+            <ListView Grid.Row="1" Grid.Column="0" Margin="5" SelectionMode="Single" ItemsSource="{Binding DNSNames}" SelectedValue="{Binding ActiveDNSName}">
+            </ListView>
             <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <local:DNSBox Grid.Row="0" Margin="5">
+                <local:DNSBox Grid.Row="0" Margin="5" DataContext="{Binding ActiveDNS}">
                 </local:DNSBox>
-                <Button Grid.Row="1" Style="{StaticResource ResourceKey=ButtonStyle}" Content="Set" Click="Button_Click"></Button>
+                <Button Grid.Row="1" Style="{StaticResource ResourceKey=ButtonStyle}" Content="Set" Command="{Binding SetCurrentDNS}"></Button>
             </Grid>
         </Grid>
     </Grid>

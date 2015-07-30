@@ -21,7 +21,7 @@ namespace ChangeDNS
     {
         public DNSBox()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
     }
 }

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ChangeDNS"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Grid VerticalAlignment="Center" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
@@ -16,9 +16,9 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Padding="3" Grid.Row="0" Grid.Column="0" Text="First" />
-        <local:IPBox Padding="3" Grid.Row="0" Grid.Column="1"></local:IPBox>
+        <TextBox Padding="3" Grid.Row="0" Grid.Column="1" Text="{Binding DNS1}" HorizontalAlignment="Center" VerticalAlignment="Center" IsReadOnly="True" BorderThickness="0"/>
         <TextBlock Padding="3" Grid.Row="1" Grid.Column="0" Text="Second"/>
-        <local:IPBox Padding="3" Grid.Row="1" Grid.Column="1"></local:IPBox>
+        <TextBox Padding="3" Grid.Row="1" Grid.Column="1" Text="{Binding DNS2}" HorizontalAlignment="Center" VerticalAlignment="Center" IsReadOnly="True" BorderThickness="0"/>
     </Grid>
 
 </UserControl>

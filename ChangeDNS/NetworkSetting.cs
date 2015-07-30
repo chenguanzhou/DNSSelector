@@ -25,7 +25,7 @@ namespace ChangeDNS
         /// 获取当前DNS
         /// </summary>
         /// <returns></returns>
-        public static string[] GetCurrentDNS()
+        public static string[] GetSystemDNS()
         {
             ManagementClass wmi = new ManagementClass("Win32_NetworkAdapterConfiguration");
             ManagementObjectCollection moc = wmi.GetInstances();

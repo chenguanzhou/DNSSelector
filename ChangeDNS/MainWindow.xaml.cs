@@ -23,33 +23,6 @@ namespace ChangeDNS
         public MainWindow()
         {
             InitializeComponent();
-            string[] dns = NetworkSetting.GetCurrentDNS();
-            UpdateCurrentDNS(dns);
-        }
-
-        private void ButtonRefreshDNS_Click(object sender, RoutedEventArgs e)
-        {
-            string[] dns = NetworkSetting.GetCurrentDNS();
-            UpdateCurrentDNS(dns);
-        }
-
-        private void UpdateCurrentDNS(string[] dns)
-        {
-            //try
-            //{
-            //    CurrentDNS.Text = string.Join(",", dns);
-            //}
-            //catch
-            //{
-            //    CurrentDNS.Text = "hehe";
-            //}
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NetworkSetting.SetDNS(new string[]{"114.114.114.114","8.8.8.8"});
-        }
-
-        
+        }    
     }
 }
